@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <attr name="colorBarraYBotones" format="color" />
+    <attr name="colorTextoPasos" format="color" />
+    <attr name="colorFondoDialogoConfirmar" format="color" />
+
+    <style name="Base.Theme.Navegacion_Menus" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorBarraYBotones">@color/morado_app_theme</item>
+        <item name="colorTextoPasos">@color/primary_color</item>
+        <item name="colorFondoDialogoConfirmar">#F5F3F7</item>
+
+        <item name="colorPrimary">?attr/colorBarraYBotones</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="Theme.Navegacion_Menus" parent="Base.Theme.Navegacion_Menus" />
+
+    <style name="Theme.Mhaisi.Toolbar" parent="ThemeOverlay.Material3.ActionBar">
+        <item name="android:colorControlNormal">#000000</item>
+    </style>
+
+    <style name="CustomActionButtonStyle" parent="Widget.AppCompat.ActionButton">
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+</resources>

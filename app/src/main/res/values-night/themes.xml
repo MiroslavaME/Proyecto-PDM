@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.Navegacion_Menus" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorBarraYBotones">@color/morado_app_theme_night</item>
+        <item name="colorTextoPasos">@color/verde_app_night</item>
+        <item name="colorFondoDialogoConfirmar">#1E1A24</item> <item name="colorPrimary">?attr/colorBarraYBotones</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="Theme.Mhaisi.Toolbar" parent="ThemeOverlay.Material3.ActionBar">
+        <item name="android:colorControlNormal">#FFFFFF</item>
+    </style>
+
+    <style name="CustomActionButtonStyle" parent="Widget.AppCompat.ActionButton">
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+</resources>

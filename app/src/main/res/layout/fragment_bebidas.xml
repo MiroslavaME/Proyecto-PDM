@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/windowBackground"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_bebidas"
+            android:textSize="32sp"
+            android:fontFamily="sans-serif-black"
+            android:textColor="?attr/colorBarraYBotones"
+            android:layout_marginBottom="4dp"/>
+
+        <View
+            android:layout_width="116dp"
+            android:layout_height="3dp"
+            android:layout_marginBottom="16dp"
+            android:background="#006241" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subtitle_tienda_bebidas"
+            android:textSize="15sp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="?android:attr/textColorPrimary"
+            android:layout_marginBottom="32dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_bebidas_calientes"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"
+            android:layout_marginBottom="16dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:clipToPadding="false"
+            android:layout_marginBottom="32dp">
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView android:layout_width="170dp" android:layout_height="wrap_content" android:layout_margin="8dp" app:cardCornerRadius="16dp" app:cardElevation="4dp" app:strokeWidth="0dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="12dp" >
+                        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center">
+                            <com.google.android.material.imageview.ShapeableImageView android:layout_width="110dp" android:layout_height="110dp" android:src="@drawable/latte" android:scaleType="centerCrop" app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" android:contentDescription="@null" />
+                            <ImageButton android:id="@+id/fab_fav_latte" android:layout_width="36dp" android:layout_height="36dp" android:layout_gravity="top|start" android:layout_margin="4dp" android:padding="8dp" android:scaleType="fitCenter" android:background="@drawable/bg_translucent_fav" android:src="@drawable/ic_favorite_24dp" app:tint="#006241" android:contentDescription="@null"/>
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/prod_latte" android:textStyle="bold" android:textColor="?android:attr/textColorPrimary" android:layout_marginTop="12dp" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/precio_latte" android:textColor="?attr/colorTextoPasos" android:textStyle="bold" android:textSize="16sp" android:layout_marginTop="4dp"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center" android:layout_marginTop="12dp" android:background="?android:attr/colorBackground" android:padding="6dp">
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btn_minus_latte" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="34dp" android:layout_height="34dp" android:text="-" android:textColor="?attr/colorTextoPasos" android:textSize="20sp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="17dp" app:strokeColor="?attr/colorTextoPasos" />
+                            <TextView android:id="@+id/tv_count_latte" android:layout_width="35dp" android:layout_height="wrap_content" android:text="0" android:gravity="center" android:textStyle="bold" android:textColor="?android:attr/textColorPrimary"/>
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btn_plus_latte" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="34dp" android:layout_height="34dp" android:text="+" android:textColor="?attr/colorTextoPasos" android:textSize="18sp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="17dp" app:strokeColor="?attr/colorTextoPasos" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:layout_width="170dp" android:layout_height="wrap_content" android:layout_margin="8dp" app:cardCornerRadius="16dp" app:cardElevation="4dp" app:strokeWidth="0dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="12dp" >
+                        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center">
+                            <com.google.android.material.imageview.ShapeableImageView android:layout_width="110dp" android:layout_height="110dp" android:src="@drawable/espresso" android:scaleType="centerCrop" app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" android:contentDescription="@null" />
+                            <ImageButton android:id="@+id/fab_fav_espresso" android:layout_width="36dp" android:layout_height="36dp" android:layout_gravity="top|start" android:layout_margin="4dp" android:padding="8dp" android:scaleType="fitCenter" android:background="@drawable/bg_translucent_fav" android:src="@drawable/ic_favorite_24dp" app:tint="#006241" android:contentDescription="@null"/>
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/prod_espresso" android:textStyle="bold" android:textColor="?android:attr/textColorPrimary" android:layout_marginTop="12dp" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/precio_espresso" android:textColor="?attr/colorTextoPasos" android:textStyle="bold" android:textSize="16sp" android:layout_marginTop="4dp"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center" android:layout_marginTop="12dp" android:background="?android:attr/colorBackground" android:padding="6dp">
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btn_minus_espresso" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="34dp" android:layout_height="34dp" android:text="-" android:textColor="?attr/colorTextoPasos" android:textSize="20sp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="17dp" app:strokeColor="?attr/colorTextoPasos" />
+                            <TextView android:id="@+id/tv_count_espresso" android:layout_width="35dp" android:layout_height="wrap_content" android:text="0" android:gravity="center" android:textStyle="bold" android:textColor="?android:attr/textColorPrimary"/>
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btn_plus_espresso" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="34dp" android:layout_height="34dp" android:text="+" android:textColor="?attr/colorTextoPasos" android:textSize="18sp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="17dp" app:strokeColor="?attr/colorTextoPasos" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:layout_width="170dp" android:layout_height="wrap_content" android:layout_margin="8dp" app:cardCornerRadius="16dp" app:cardElevation="4dp" app:strokeWidth="0dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="12dp" >
+                        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center">
+                            <com.google.android.material.imageview.ShapeableImageView android:layout_width="110dp" android:layout_height="110dp" android:src="@drawable/chocolate" android:scaleType="centerCrop" app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" android:contentDescription="@null" />
+                            <ImageButton android:id="@+id/fab_fav_chocolate" android:layout_width="36dp" android:layout_height="36dp" android:layout_gravity="top|start" android:layout_margin="4dp" android:padding="8dp" android:scaleType="fitCenter" android:background="@drawable/bg_translucent_fav" android:src="@drawable/ic_favorite_24dp" app:tint="#006241" android:contentDescription="@null"/>
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/prod_chocolate" android:textStyle="bold" android:textColor="?android:attr/textColorPrimary" android:layout_marginTop="12dp" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/precio_chocolate" android:textColor="?attr/colorTextoPasos" android:textStyle="bold" android:textSize="16sp" android:layout_marginTop="4dp"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center" android:layout_marginTop="12dp" android:background="?android:attr/colorBackground" android:padding="6dp">
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btn_minus_chocolate" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="34dp" android:layout_height="34dp" android:text="-" android:textColor="?attr/colorTextoPasos" android:textSize="20sp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="17dp" app:strokeColor="?attr/colorTextoPasos" />
+                            <TextView android:id="@+id/tv_count_chocolate" android:layout_width="35dp" android:layout_height="wrap_content" android:text="0" android:gravity="center" android:textStyle="bold" android:textColor="?android:attr/textColorPrimary"/>
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btn_plus_chocolate" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="34dp" android:layout_height="34dp" android:text="+" android:textColor="?attr/colorTextoPasos" android:textSize="18sp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="17dp" app:strokeColor="?attr/colorTextoPasos" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:layout_width="170dp" android:layout_height="wrap_content" android:layout_margin="8dp" app:cardCornerRadius="16dp" app:cardElevation="4dp" app:strokeWidth="0dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="12dp" >
+                        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center">
+                            <com.google.android.material.imageview.ShapeableImageView android:layout_width="110dp" android:layout_height="110dp" android:src="@drawable/capuccino" android:scaleType="centerCrop" app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" android:contentDescription="@null" />
+                            <ImageButton android:id="@+id/fab_fav_capuccino" android:layout_width="36dp" android:layout_height="36dp" android:layout_gravity="top|start" android:layout_margin="4dp" android:padding="8dp" android:scaleType="fitCenter" android:background="@drawable/bg_translucent_fav" android:src="@drawable/ic_favorite_24dp" app:tint="#006241" android:contentDescription="@null"/>
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/prod_capuccino" android:textStyle="bold" android:textColor="?android:attr/textColorPrimary" android:layout_marginTop="12dp" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/precio_capuccino" android:textColor="?attr/colorTextoPasos" android:textStyle="bold" android:textSize="16sp" android:layout_marginTop="4dp"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center" android:layout_marginTop="12dp" android:background="?android:attr/colorBackground" android:padding="6dp">
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btn_minus_capuccino" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="34dp" android:layout_height="34dp" android:text="-" android:textColor="?attr/colorTextoPasos" android:textSize="20sp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="17dp" app:strokeColor="?attr/colorTextoPasos" />
+                            <TextView android:id="@+id/tv_count_capuccino" android:layout_width="35dp" android:layout_height="wrap_content" android:text="0" android:gravity="center" android:textStyle="bold" android:textColor="?android:attr/textColorPrimary"/>
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btn_plus_capuccino" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="34dp" android:layout_height="34dp" android:text="+" android:textColor="?attr/colorTextoPasos" android:textSize="18sp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="17dp" app:strokeColor="?attr/colorTextoPasos" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_bebidas_frias"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"
+            android:layout_marginBottom="16dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:clipToPadding="false"
+            android:layout_marginBottom="32dp">
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView android:layout_width="170dp" android:layout_height="wrap_content" android:layout_margin="8dp" app:cardCornerRadius="16dp" app:cardElevation="4dp" app:strokeWidth="0dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="12dp" >
+                        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center">
+                            <com.google.android.material.imageview.ShapeableImageView android:layout_width="110dp" android:layout_height="110dp" android:src="@drawable/tefrio" android:scaleType="centerCrop" app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" android:contentDescription="@null" />
+                            <ImageButton android:id="@+id/fab_fav_te" android:layout_width="36dp" android:layout_height="36dp" android:layout_gravity="top|start" android:layout_margin="4dp" android:padding="8dp" android:scaleType="fitCenter" android:background="@drawable/bg_translucent_fav" android:src="@drawable/ic_favorite_24dp" app:tint="#006241" android:contentDescription="@null"/>
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/prod_te" android:textStyle="bold" android:textColor="?android:attr/textColorPrimary" android:layout_marginTop="12dp" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/precio_te" android:textColor="?attr/colorTextoPasos" android:textStyle="bold" android:textSize="16sp" android:layout_marginTop="4dp"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center" android:layout_marginTop="12dp" android:background="?android:attr/colorBackground" android:padding="6dp">
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btn_minus_te" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="34dp" android:layout_height="34dp" android:text="-" android:textColor="?attr/colorTextoPasos" android:textSize="20sp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="17dp" app:strokeColor="?attr/colorTextoPasos" />
+                            <TextView android:id="@+id/tv_count_te" android:layout_width="35dp" android:layout_height="wrap_content" android:text="0" android:gravity="center" android:textStyle="bold" android:textColor="?android:attr/textColorPrimary"/>
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btn_plus_te" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="34dp" android:layout_height="34dp" android:text="+" android:textColor="?attr/colorTextoPasos" android:textSize="18sp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="17dp" app:strokeColor="?attr/colorTextoPasos" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:layout_width="170dp" android:layout_height="wrap_content" android:layout_margin="8dp" app:cardCornerRadius="16dp" app:cardElevation="4dp" app:strokeWidth="0dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="12dp" >
+                        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center">
+                            <com.google.android.material.imageview.ShapeableImageView android:layout_width="110dp" android:layout_height="110dp" android:src="@drawable/limonada" android:scaleType="centerCrop" app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" android:contentDescription="@null" />
+                            <ImageButton android:id="@+id/fab_fav_limonada" android:layout_width="36dp" android:layout_height="36dp" android:layout_gravity="top|start" android:layout_margin="4dp" android:padding="8dp" android:scaleType="fitCenter" android:background="@drawable/bg_translucent_fav" android:src="@drawable/ic_favorite_24dp" app:tint="#006241" android:contentDescription="@null"/>
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/prod_limonada" android:textStyle="bold" android:textColor="?android:attr/textColorPrimary" android:layout_marginTop="12dp" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/precio_limonada" android:textColor="?attr/colorTextoPasos" android:textStyle="bold" android:textSize="16sp" android:layout_marginTop="4dp"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center" android:layout_marginTop="12dp" android:background="?android:attr/colorBackground" android:padding="6dp">
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btn_minus_limonada" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="34dp" android:layout_height="34dp" android:text="-" android:textColor="?attr/colorTextoPasos" android:textSize="20sp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="17dp" app:strokeColor="?attr/colorTextoPasos" />
+                            <TextView android:id="@+id/tv_count_limonada" android:layout_width="35dp" android:layout_height="wrap_content" android:text="0" android:gravity="center" android:textStyle="bold" android:textColor="?android:attr/textColorPrimary"/>
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btn_plus_limonada" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="34dp" android:layout_height="34dp" android:text="+" android:textColor="?attr/colorTextoPasos" android:textSize="18sp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="17dp" app:strokeColor="?attr/colorTextoPasos" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:layout_width="170dp" android:layout_height="wrap_content" android:layout_margin="8dp" app:cardCornerRadius="16dp" app:cardElevation="4dp" app:strokeWidth="0dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="12dp" >
+                        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center">
+                            <com.google.android.material.imageview.ShapeableImageView android:layout_width="110dp" android:layout_height="110dp" android:src="@drawable/smoothie" android:scaleType="centerCrop" app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" android:contentDescription="@null" />
+                            <ImageButton android:id="@+id/fab_fav_smoothie" android:layout_width="36dp" android:layout_height="36dp" android:layout_gravity="top|start" android:layout_margin="4dp" android:padding="8dp" android:scaleType="fitCenter" android:background="@drawable/bg_translucent_fav" android:src="@drawable/ic_favorite_24dp" app:tint="#006241" android:contentDescription="@null"/>
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/prod_smoothie" android:textStyle="bold" android:textColor="?android:attr/textColorPrimary" android:layout_marginTop="12dp" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/precio_smoothie" android:textColor="?attr/colorTextoPasos" android:textStyle="bold" android:textSize="16sp" android:layout_marginTop="4dp"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center" android:layout_marginTop="12dp" android:background="?android:attr/colorBackground" android:padding="6dp">
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btn_minus_smoothie" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="34dp" android:layout_height="34dp" android:text="-" android:textColor="?attr/colorTextoPasos" android:textSize="20sp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="17dp" app:strokeColor="?attr/colorTextoPasos" />
+                            <TextView android:id="@+id/tv_count_smoothie" android:layout_width="35dp" android:layout_height="wrap_content" android:text="0" android:gravity="center" android:textStyle="bold" android:textColor="?android:attr/textColorPrimary"/>
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btn_plus_smoothie" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="34dp" android:layout_height="34dp" android:text="+" android:textColor="?attr/colorTextoPasos" android:textSize="18sp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="17dp" app:strokeColor="?attr/colorTextoPasos" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:layout_width="170dp" android:layout_height="wrap_content" android:layout_margin="8dp" app:cardCornerRadius="16dp" app:cardElevation="4dp" app:strokeWidth="0dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="12dp" >
+                        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center">
+                            <com.google.android.material.imageview.ShapeableImageView android:layout_width="110dp" android:layout_height="110dp" android:src="@drawable/matcha" android:scaleType="centerCrop" app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" android:contentDescription="@null" />
+                            <ImageButton android:id="@+id/fab_fav_matcha" android:layout_width="36dp" android:layout_height="36dp" android:layout_gravity="top|start" android:layout_margin="4dp" android:padding="8dp" android:scaleType="fitCenter" android:background="@drawable/bg_translucent_fav" android:src="@drawable/ic_favorite_24dp" app:tint="#006241" android:contentDescription="@null"/>
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/prod_matcha" android:textStyle="bold" android:textColor="?android:attr/textColorPrimary" android:layout_marginTop="12dp" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/precio_matcha" android:textColor="?attr/colorTextoPasos" android:textStyle="bold" android:textSize="16sp" android:layout_marginTop="4dp"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center" android:layout_marginTop="12dp" android:background="?android:attr/colorBackground" android:padding="6dp">
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btn_minus_matcha" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="34dp" android:layout_height="34dp" android:text="-" android:textColor="?attr/colorTextoPasos" android:textSize="20sp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="17dp" app:strokeColor="?attr/colorTextoPasos" />
+                            <TextView android:id="@+id/tv_count_matcha" android:layout_width="35dp" android:layout_height="wrap_content" android:text="0" android:gravity="center" android:textStyle="bold" android:textColor="?android:attr/textColorPrimary"/>
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btn_plus_matcha" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="34dp" android:layout_height="34dp" android:text="+" android:textColor="?attr/colorTextoPasos" android:textSize="18sp" android:padding="0dp" android:insetTop="0dp" android:insetBottom="0dp" app:cornerRadius="17dp" app:strokeColor="?attr/colorTextoPasos" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

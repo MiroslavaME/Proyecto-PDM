@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        app:title="Apariencia">
+
+        <SwitchPreferenceCompat
+            app:key="tema_oscuro"
+            app:title="Tema Oscuro"
+            app:summary="Cambia la aplicación a colores oscuros para descansar la vista" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="Notificaciones">
+
+        <SwitchPreferenceCompat
+            app:key="estado_pedido"
+            app:title="Estado del pedido"
+            app:summary="Recibir alertas cuando tu café esté listo en barra para recoger" />
+
+        <SwitchPreferenceCompat
+            app:key="cupones_promociones"
+            app:title="Cupones y Promociones"
+            app:summary="Enterarte antes que nadie de los descuentos de temporada" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

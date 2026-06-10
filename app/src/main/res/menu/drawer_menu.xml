@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_24dp"
+            android:title="@string/menu_drawer_inicio" />
+    </group>
+
+    <item android:title="@string/menu_drawer_sub_perfil">
+        <menu>
+            <item
+                android:id="@+id/nav_orders"
+                android:icon="@drawable/ic_orders"
+                android:title="@string/menu_drawer_pedidos" />
+            <item
+                android:id="@+id/nav_favorites"
+                android:icon="@drawable/ic_favorite_24dp"
+                android:title="@string/menu_drawer_favoritos" />
+        </menu>
+    </item>
+
+    <item android:title="@string/menu_drawer_sub_descubrir">
+        <menu>
+            <item
+                android:id="@+id/nav_news"
+                android:icon="@drawable/novedades"
+                android:title="@string/menu_drawer_novedades" />
+            <item
+                android:id="@+id/nav_season"
+                android:icon="@drawable/temporada"
+                android:title="@string/menu_drawer_temporada" />
+
+            <item
+                android:id="@+id/nav_coupons"
+                android:icon="@drawable/cupones"
+                android:title="@string/menu_drawer_cupones" />
+
+            <item
+                android:id="@+id/nav_merch"
+                android:icon="@drawable/mercancia"
+                android:title="@string/menu_drawer_mercancia" />
+        </menu>
+    </item>
+
+    <item android:title="@string/menu_drawer_sub_info">
+        <menu>
+            <item
+                android:id="@+id/nav_locations"
+                android:icon="@drawable/sucursales"
+                android:title="@string/menu_drawer_sucursales" />
+            <item
+                android:id="@+id/nav_about_us"
+                android:icon="@drawable/quienessomos"
+                android:title="@string/menu_drawer_quienes_somos" />
+        </menu>
+    </item>
+
+    <item android:title="@string/menu_drawer_sub_ayuda">
+        <menu>
+            <item
+                android:id="@+id/nav_faq"
+                android:icon="@drawable/preguntas"
+                android:title="@string/menu_drawer_preguntas" />
+        </menu>
+    </item>
+
+    <item android:title="Cuenta">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/cerrar"
+                android:title="@string/menu_drawer_cerrar_sesion" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_marginBottom="16dp"
+    android:background="?android:attr/windowBackground"> <TextView
+    android:id="@+id/tv_item_number"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Producto 1"
+    android:textColor="?attr/colorBarraYBotones" android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_marginBottom="12dp"/>
+
+    <LinearLayout
+        android:id="@+id/section_size_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_titulo_tamano"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tamaño"
+            android:textColor="?android:attr/textColorPrimary" android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/section_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <RadioButton android:id="@+id/rb_chico" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Chico"/>
+            <RadioButton android:id="@+id/rb_mediano" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Mediano"/>
+            <RadioButton android:id="@+id/rb_grande" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Grande" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/section_leche" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginBottom="12dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tipo de leche" android:textColor="?android:attr/textColorPrimary" android:textStyle="bold" android:layout_marginBottom="4dp"/> <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+        <RadioButton android:id="@+id/rb_entera" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Entera" />
+        <RadioButton android:id="@+id/rb_deslacto" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Deslactosada"/>
+    </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <RadioButton android:id="@+id/rb_almendra" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Almendra"/>
+            <RadioButton android:id="@+id/rb_coco" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Coco"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/section_endulzante" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginBottom="12dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Endulzante" android:textColor="?android:attr/textColorPrimary" android:textStyle="bold" android:layout_marginBottom="4dp"/> <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+        <RadioButton android:id="@+id/rb_sin_azucar" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Sin Azúcar"/>
+        <RadioButton android:id="@+id/rb_azucar" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Azúcar" />
+    </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <RadioButton android:id="@+id/rb_stevia" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Stevia"/>
+            <RadioButton android:id="@+id/rb_miel" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Miel"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/section_salados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salsas y Aderezos"
+            android:textColor="?android:attr/textColorPrimary" android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <CheckBox android:id="@+id/cb_mayonesa" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Mayonesa" />
+            <CheckBox android:id="@+id/cb_chipotle" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Chipotle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_salsas_opcionales"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <CheckBox android:id="@+id/cb_catsup" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Catsup" />
+            <CheckBox android:id="@+id/cb_mostaza" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Mostaza" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vegetales"
+            android:textColor="?android:attr/textColorPrimary" android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <CheckBox android:id="@+id/cb_cebolla" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Cebolla" />
+            <CheckBox android:id="@+id/cb_jitomate" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Jitomate" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <CheckBox android:id="@+id/cb_lechuga" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Lechuga" />
+            <CheckBox android:id="@+id/cb_picante" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Chiles" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Añadir Extras (+$15)"
+            android:textStyle="bold"
+            android:textColor="?attr/colorBarraYBotones" android:layout_marginTop="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <CheckBox android:id="@+id/cb_extra_queso" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Extra Queso" />
+            <CheckBox android:id="@+id/cb_extra_aguacate" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Aguacate" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <CheckBox android:id="@+id/cb_extra_aderezo" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Extra Aderezo" />
+            <View android:layout_width="0dp" android:layout_weight="1" android:layout_height="0dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/section_dulces"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Topping extra (+$15 c/u)"
+            android:textStyle="bold"
+            android:textColor="?attr/colorBarraYBotones" android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:id="@+id/row_dulces_primera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <CheckBox
+                android:id="@+id/cb_extra_chocolate"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Extra Chocolate" />
+            <CheckBox
+                android:id="@+id/cb_bola_helado"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Bola de Helado" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <CheckBox
+                android:id="@+id/cb_extra_caramelo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Extra Caramelo" />
+            <CheckBox
+                android:id="@+id/cb_extra_nueces"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Extra Nueces" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

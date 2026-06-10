@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/edit"
+        android:title="Iniciar Sesión"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/menu_ajustes"
+        android:icon="@drawable/ic_ajustes"
+        android:title="Configuración de la app"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/more01"
+        android:icon="@drawable/ic_report"
+        android:title="Reportar un problema"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/more02"
+        android:icon="@drawable/ic_informacion"
+        android:title="Más info sobre la app"
+        app:showAsAction="never" />
+</menu>

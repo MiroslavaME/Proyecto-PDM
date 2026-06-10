@@ -1,0 +1,131 @@
+<resources>
+
+    <string name="app_name">Mhaisi Coffee</string>
+    <string name="title_second_activity">Segunda Actividad</string>
+    <string name="btn_navigate">Ir a Nueva Actividad</string>
+
+    <string name="perfil">Perfil</string>
+    <string name="menu_favorite">Favoritos</string>
+    <string name="menu_more01">Reportar un problema</string>
+    <string name="menu_more02">Más información</string>
+    <string name="menu_more03">Configuración</string>
+    <string name="menu_edit_description">Opcion editar en la barra de herramientas superior</string>
+    <string name="menu_favorite_description">Opcion favoritos en la barra de herramientas superior</string>
+    <string name="menu_more_description">Opcion más en la barra de herramientas superior</string>
+
+    <string name="summary_title">¡Bienvenid@ a Mhaisi Coffee!</string>
+    <string name="summary_description">Olvídate de las filas. Ordena de forma <b>100% digital</b> y disfruta tu café favorito sin esperas recogiendo directamente en caja.</string>
+    <string name="summary_features_title">Pasos para disfrutar tu café:</string>
+    <string name="summary_feature_1">1. <b>Regístrate y Gana:</b> Crea tu cuenta obligatoria para empezar a acumular puntos y acceder a nuestro menú exclusivo.</string>
+    <string name="summary_feature_2">2. <b>Elige y Aplica:</b> Selecciona tus productos favoritos y no olvides aplicar tus cupones de descuento en el carrito.</string>
+    <string name="summary_feature_3">3. <b>Escanea y Disfruta:</b> Al finalizar, recibirás un código QR único. Muéstralo en la barra una vez te llamen para recoger tu pedido al instante.</string>
+    <string name="btn_make_order">Realizar mi pedido ahora</string>
+
+    <string name="menu_drawer_sub_perfil">Mi Perfil</string>
+    <string name="menu_drawer_sub_descubrir">Descubrir</string>
+    <string name="menu_drawer_sub_info">Sobre Mhaisi Coffee</string>
+    <string name="menu_drawer_sub_ayuda">Soporte y Ayuda</string>
+    <string name="menu_drawer_sub_sesion">Sesión</string>
+
+    <string name="menu_drawer_inicio">Inicio</string>
+    <string name="menu_drawer_favoritos">Favoritos</string>
+    <string name="menu_drawer_pedidos">Mis pedidos</string>
+    <string name="menu_drawer_novedades">Novedades</string>
+    <string name="menu_drawer_temporada">Productos de Temporada</string>
+    <string name="menu_drawer_mercancia">Mercancía</string>
+    <string name="menu_drawer_sucursales">Sucursales</string>
+    <string name="menu_drawer_cupones">Cupones</string>
+    <string name="menu_drawer_quienes_somos">¿Quiénes somos?</string>
+    <string name="menu_drawer_preguntas">Preguntas Frecuentes</string>
+    <string name="menu_drawer_ayuda_general">Centro de Ayuda</string>
+    <string name="menu_drawer_cerrar_sesion">Cerrar sesión</string>
+
+    <string name="nav_bebidas">Bebidas</string>
+    <string name="nav_comidas">Alimentos</string>
+    <string name="nav_extra">Otros</string>
+    <string name="nav_finalizar">Mi Orden</string>
+
+    <string name="nav_extras">Snacks y más</string>
+    <string name="subtitle_tienda_extras">Lleva la experiencia Mhaisi Coffee a casa</string>
+
+    <string name="title_tienda_granos">Café en Grano y Molido</string>
+    <string name="prod_oaxaca">Grano Oaxaca</string>
+    <string name="precio_oaxaca">$280.00</string>
+    <string name="prod_michoacan">Molido Michoacán</string>
+    <string name="precio_michoacan">$265.00</string>
+
+    <string name="title_tienda_termos">Termos y Accesorios</string>
+    <string name="prod_termo_rosa">Termo Rosa</string>
+    <string name="precio_termo_rosa">$450.00</string>
+    <string name="prod_termo_aniversario">Termo Aniversario</string>
+    <string name="precio_termo_aniversario">$520.00</string>
+    <string name="prod_tote_bag">Tote Bag Mhaisi</string>
+    <string name="precio_tote_bag">$190.00</string>
+
+    <string name="title_tienda_snacks">Snacks para el camino</string>
+    <string name="prod_galletas">Galletas Avena</string>
+    <string name="precio_galletas">$38.00</string>
+    <string name="prod_mix">Mix Energético</string>
+    <string name="precio_mix">$42.00</string>
+
+    <string name="subtitle_tienda_comidas">Elige tu complemento favorito!</string>
+    <string name="title_comidas_saladas">Opciones Saladas</string>
+    <string name="title_comidas_dulces">Opciones Dulces</string>
+
+    <string name="prod_baguette">Baguette Pizza</string>
+    <string name="precio_baguette">$95.00</string>
+    <string name="prod_cesar">Ensalada César</string>
+    <string name="precio_cesar">$110.00</string>
+    <string name="prod_pavo">Sandwich Pavo</string>
+    <string name="precio_pavo">$85.00</string>
+    <string name="prod_bagel">Bagel Guacamole</string>
+    <string name="precio_bagel">$75.00</string>
+
+    <string name="prod_dona">Dona Caramelo</string>
+    <string name="precio_dona">$35.00</string>
+    <string name="prod_tarta">Tarta de Moras</string>
+    <string name="precio_tarta">$60.00</string>
+    <string name="prod_zanahoria">Pastel Zanahoria</string>
+    <string name="precio_zanahoria">$70.00</string>
+    <string name="prod_cheesecake">Cheesecake</string>
+    <string name="precio_cheesecake">$65.00</string>
+
+    <string name="subtitle_tienda_bebidas">Conoce nuestras bebidas de temporada</string>
+    <string name="title_bebidas_calientes">Bebidas Calientes</string>
+    <string name="title_bebidas_frias">Bebidas frías</string>
+
+    <string name="prod_latte">Latte Clásico</string>
+    <string name="precio_latte">$65.00</string>
+    <string name="prod_espresso">Espresso</string>
+    <string name="precio_espresso">$45.00</string>
+    <string name="prod_chocolate">Chocolate Caliente</string>
+    <string name="precio_chocolate">$50.00</string>
+    <string name="prod_capuccino">Capuccino</string>
+    <string name="precio_capuccino">$70.00</string>
+
+    <string name="prod_te">Té Frío</string>
+    <string name="precio_te">$55.00</string>
+    <string name="prod_limonada">Limonada de Fresa</string>
+    <string name="precio_limonada">$40.00</string>
+    <string name="prod_smoothie">Smoothie Asha</string>
+    <string name="precio_smoothie">$80.00</string>
+    <string name="prod_matcha">Matcha</string>
+    <string name="precio_matcha">$75.00</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="novedad">Prueba nuestro Mhaisi Strawberry Blend. Notas dulces de temporada.</string>
+</resources>
