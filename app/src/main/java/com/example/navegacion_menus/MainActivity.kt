@@ -38,100 +38,68 @@ class MainActivity : AppCompatActivity() {
         drawerLayout = findViewById(R.id.drawerLayout)
         navigationView = findViewById(R.id.navigationView)
 
-        setSupportActionBar(topAppBar)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-
-        cargarEstadoSesion()
-
-        val btnNavigate = findViewById<com.google.android.material.button.MaterialButton>(R.id.btnNavigate)
-        btnNavigate?.setOnClickListener {
-            if (usuarioEstaRegistrado) {
-                val intent = Intent(this, SecondActivity::class.java)
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "Para realizar pedidos, por favor crea tu cuenta ", Toast.LENGTH_LONG).show()
-                val intent = Intent(this, RegistroActivity::class.java)
-                startActivity(intent)
-            }
-        }
+        topAppBar.inflateMenu(R.menu.top_app_bar)
+        topAppBar.setNavigationIcon(R.drawable.ic_menu_24dp)
 
         topAppBar.setNavigationOnClickListener {
             drawerLayout.open()
         }
 
-        navigationView.setNavigationItemSelectedListener { menuItem ->
-            drawerLayout.close()
+        val typedValue = android.util.TypedValue()
+        theme.resolveAttribute(com.google.android.material.R.attr.colorOnPrimary, typedValue, true)
+        val colorContraste = if (typedValue.resourceId != 0) {
+            androidx.core.content.ContextCompat.getColor(this, typedValue.resourceId)
+        } else {
+            typedValue.data
+        }
 
-            cargarEstadoSesion()
+        topAppBar.navigationIcon?.let { drawable ->
+            val wrapped = androidx.core.graphics.drawable.DrawableCompat.wrap(drawable)
+            androidx.core.graphics.drawable.DrawableCompat.setTint(wrapped, colorContraste)
+            topAppBar.navigationIcon = wrapped
+        }
 
-            when (menuItem.itemId) {
-                R.id.nav_home -> {
-                    Toast.makeText(this, "Inicio: Mhaisi Coffee", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_orders -> {
+        topAppBar.overflowIcon?.let { drawable ->
+            val wrapped = androidx.core.graphics.drawable.DrawableCompat.wrap(drawable)
+            androidx.core.graphics.drawable.DrawableCompat.setTint(wrapped, colorContraste)
+            topAppBar.overflowIcon = wrapped
+        }
+
+        cargarEstadoSesion()
+        actualizarMenuToolbar()
+
+        topAppBar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.edit -> {
                     if (usuarioEstaRegistrado) {
-                        Toast.makeText(this, "Consultando tus pedidos anteriores...", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, PerfilActivity::class.java))
                     } else {
-                        Toast.makeText(this, "Regístrate para guardar tu historial de compras", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this, RegistroActivity::class.java))
                     }
+                    true
                 }
-                R.id.nav_favorites -> {
-                    if (usuarioEstaRegistrado) {
-                        Toast.makeText(this, "Abriendo tus favoritos ", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, FavoritosActivity::class.java))
-                    } else {
-                        Toast.makeText(this, "Crea tu cuenta para guardar tus cafés favoritos", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, RegistroActivity::class.java))
-                    }
+
+                R.id.menu_ajustes -> {
+                    startActivity(Intent(this, SettingsActivity::class.java))
+                    true
                 }
-                R.id.nav_news -> {
+
+                R.id.more01 -> {
                     val intent = Intent(this, InfoActivity::class.java)
-                    intent.putExtra("TIPO_PANTALLA", "NOVEDADES")
+                    intent.putExtra("TIPO_PANTALLA", "REPORTAR")
                     startActivity(intent)
+                    true
                 }
-                R.id.nav_season -> {
+
+                R.id.more02 -> {
                     val intent = Intent(this, InfoActivity::class.java)
-                    intent.putExtra("TIPO_PANTALLA", "TEMPORADA")
+                    intent.putExtra("TIPO_PANTALLA", "MAS_INFO")
                     startActivity(intent)
+                    true
                 }
-                R.id.nav_coupons -> {
-                    if (usuarioEstaRegistrado) {
-                        startActivity(Intent(this, CuponesActivity::class.java))
-                    } else {
-                        Toast.makeText(this, "¡Los cupones de descuento son exclusivos para miembros!", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, RegistroActivity::class.java))
-                    }
-                }
-                R.id.nav_merch -> {
-                    val intent = Intent(this, InfoActivity::class.java)
-                    intent.putExtra("TIPO_PANTALLA", "MERCANCIA")
-                    startActivity(intent)
-                }
-                R.id.nav_locations -> {
-                    val intent = Intent(this, InfoActivity::class.java)
-                    intent.putExtra("TIPO_PANTALLA", "SUCURSALES")
-                    startActivity(intent)
-                }
-                R.id.nav_about_us -> {
-                    val intent = Intent(this, InfoActivity::class.java)
-                    intent.putExtra("TIPO_PANTALLA", "ABOUT")
-                    startActivity(intent)
-                }
-                R.id.nav_faq -> {
-                    val intent = Intent(this, InfoActivity::class.java)
-                    intent.putExtra("TIPO_PANTALLA", "FAQ")
-                    startActivity(intent)
-                }
-                R.id.nav_logout -> {
-                    if (usuarioEstaRegistrado) {
-                        cerrarSesionUsuario()
-                    } else {
-                        Toast.makeText(this, "Actualmente navegas en Modo Invitado", Toast.LENGTH_SHORT).show()
-                    }
-                }
+
+                else -> false
             }
-            true
         }
     }
 
@@ -144,20 +112,18 @@ class MainActivity : AppCompatActivity() {
     private fun cerrarSesionUsuario() {
         Log.d("Tarea3_Mhaisi", "Cerrando sesión: Limpiando SharedPreferences")
         val prefs = getSharedPreferences("MhaisiPrefs", Context.MODE_PRIVATE)
-
         prefs.edit().clear().commit()
 
         usuarioEstaRegistrado = false
         nombreUsuarioLogueado = "Invitado"
 
-        invalidateOptionsMenu()
+        actualizarMenuToolbar()
 
         for (i in 0 until navigationView.menu.size()) {
             navigationView.menu.getItem(i).isChecked = false
         }
 
         Toast.makeText(this, "Sesión cerrada. Volviendo a modo Invitado.", Toast.LENGTH_SHORT).show()
-
         val intent = Intent(this, RegistroActivity::class.java)
         startActivity(intent)
     }
@@ -165,48 +131,12 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         cargarEstadoSesion()
-        invalidateOptionsMenu()
+        actualizarMenuToolbar()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_app_bar, menu)
-
-        if (menu != null && menu.javaClass.simpleName == "MenuBuilder") {
-            try {
-                val method = menu.javaClass.getDeclaredMethod(
-                    "setOptionalIconsVisible",
-                    Boolean::class.javaPrimitiveType
-                )
-                method.isAccessible = true
-                method.invoke(menu, true)
-
-                val typedValue = android.util.TypedValue()
-                theme.resolveAttribute(com.google.android.material.R.attr.colorOnPrimary, typedValue, true)
-
-                val colorIcono = if (typedValue.resourceId != 0) {
-                    androidx.core.content.ContextCompat.getColor(this, typedValue.resourceId)
-                } else {
-                    typedValue.data
-                }
-
-                for (i in 0 until menu.size()) {
-                    val item = menu.getItem(i)
-                    // Tintamos los iconos de manera segura para que no queden negros en modo noche
-                    item.icon?.let { drawable ->
-                        val wrapped = androidx.core.graphics.drawable.DrawableCompat.wrap(drawable)
-                        androidx.core.graphics.drawable.DrawableCompat.setTint(wrapped, colorIcono)
-                        item.icon = wrapped
-                    }
-                }
-            } catch (e: Exception) {
-                Log.e("Tarea3_Mhaisi", "Error al alinear o tintar iconos de la barra superior", e)
-            }
-        }
-        return true
-    }
-
-    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        val perfilItem = menu?.findItem(R.id.edit)
+    // CORRECCIÓN 2: Método personalizado para actualizar dinámicamente el texto del perfil manteniendo el color del XML
+    private fun actualizarMenuToolbar() {
+        val perfilItem = topAppBar.menu.findItem(R.id.edit)
 
         val textoBase = if (usuarioEstaRegistrado) {
             "$nombreUsuarioLogueado ▾"
@@ -214,56 +144,23 @@ class MainActivity : AppCompatActivity() {
             "Iniciar Sesión"
         }
 
-        val typedValue = android.util.TypedValue()
-        theme.resolveAttribute(com.google.android.material.R.attr.colorOnPrimary, typedValue, true)
-
-        val colorTextoActivo = if (typedValue.resourceId != 0) {
-            androidx.core.content.ContextCompat.getColor(this, typedValue.resourceId)
-        } else {
-            typedValue.data
-        }
-
         perfilItem?.let { item ->
+            val typedValue = android.util.TypedValue()
+            theme.resolveAttribute(com.google.android.material.R.attr.colorOnPrimary, typedValue, true)
+            val colorTexto = if (typedValue.resourceId != 0) {
+                androidx.core.content.ContextCompat.getColor(this, typedValue.resourceId)
+            } else {
+                typedValue.data
+            }
+
             val spannableString = android.text.SpannableString(textoBase)
             spannableString.setSpan(
-                android.text.style.ForegroundColorSpan(colorTextoActivo),
+                android.text.style.ForegroundColorSpan(colorTexto),
                 0,
                 spannableString.length,
                 android.text.Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
             )
             item.title = spannableString
-        }
-
-        return super.onPrepareOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.edit -> {
-                if (usuarioEstaRegistrado) {
-                    startActivity(Intent(this, PerfilActivity::class.java))
-                } else {
-                    startActivity(Intent(this, RegistroActivity::class.java))
-                }
-                true
-            }
-            R.id.menu_ajustes -> {
-                startActivity(Intent(this, SettingsActivity::class.java))
-                true
-            }
-            R.id.more01 -> {
-                val intent = Intent(this, InfoActivity::class.java)
-                intent.putExtra("TIPO_PANTALLA", "REPORTAR")
-                startActivity(intent)
-                true
-            }
-            R.id.more02 -> {
-                val intent = Intent(this, InfoActivity::class.java)
-                intent.putExtra("TIPO_PANTALLA", "MAS_INFO")
-                startActivity(intent)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
         }
     }
 }
