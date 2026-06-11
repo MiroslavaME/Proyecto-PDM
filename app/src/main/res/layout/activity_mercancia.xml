@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Boutique Mhaisi"
+            android:text="Mercancia Mhaisi"
             android:textSize="32sp"
             android:fontFamily="sans-serif-black"
             android:textColor="?attr/colorBarraYBotones"

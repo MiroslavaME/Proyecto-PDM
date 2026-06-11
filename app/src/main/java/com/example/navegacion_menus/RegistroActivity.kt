@@ -1,5 +1,7 @@
 package com.example.navegacion_menus
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
@@ -48,7 +50,7 @@ class RegistroActivity : AppCompatActivity() {
                 .build()
 
             datePicker.addOnPositiveButtonClickListener { selection ->
-                fechaSeleccionadaMs = selection // Guardamos los milisegundos
+                fechaSeleccionadaMs = selection
 
                 val timeZoneUtc = TimeZone.getDefault()
                 val offset = timeZoneUtc.getOffset(Date().time) * -1
@@ -70,30 +72,38 @@ class RegistroActivity : AppCompatActivity() {
 
                 val primerNombre = nombreCompleto.split(" ").firstOrNull() ?: nombreCompleto
 
-                Log.d("Tarea3_Mhaisi", "Registro Exitoso - Guardando en SharedPreferences")
-
                 val calNacimiento = Calendar.getInstance()
                 calNacimiento.timeInMillis = fechaSeleccionadaMs
-
                 val mesNacimiento = calNacimiento.get(Calendar.MONTH) + 1
+                val diaNacimiento = calNacimiento.get(Calendar.DAY_OF_MONTH)
 
-                val prefs = getSharedPreferences("MhaisiPrefs", android.content.Context.MODE_PRIVATE)
-                prefs.edit().apply {
-                    putBoolean("is_logged_in", true)
-                    putString("user_name", primerNombre)
-                    putString("full_name", nombreCompleto)
-                    putString("email", correo)
-                    putString("birthday", cumpleanios)
+                val dbHelper = DataBaseHelper(this)
+                val idUsuarioGenerado = dbHelper.registrarOObtenerUsuario(nombreCompleto, correo, mesNacimiento)
 
+                if (idUsuarioGenerado != -1L) {
+                    val prefs = getSharedPreferences("MhaisiPrefs", Context.MODE_PRIVATE)
+                    prefs.edit().apply {
+                        putBoolean("is_logged_in", true)
+                        putInt("user_id", idUsuarioGenerado.toInt())
+                        putString("user_name", nombreCompleto)
+                        putString("user_email", correo)
+                        putString("user_birthday", cumpleanios)
+                        putInt("user_birth_month", mesNacimiento)
+                        putInt("user_birth_day", diaNacimiento)
+                        putBoolean("cupon_mhaisibienvenida_usado", false)
+                        putBoolean("cupon_mhaisicumple_usado", false)
+                        apply()
+                    }
 
-                    putInt("user_birth_month", mesNacimiento)
-                    putBoolean("cupon_mhaisibienvenida_usado", false)
-                    putBoolean("cupon_mhaisicump_usado", false)
-                    apply()
+                    Toast.makeText(this, "¡Cuenta creada exitosamente para $primerNombre!", Toast.LENGTH_LONG).show()
+
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(this, "Error al registrar el usuario en la base de datos", Toast.LENGTH_LONG).show()
                 }
-
-                Toast.makeText(this, "¡Cuenta creada exitosamente para $primerNombre!", Toast.LENGTH_LONG).show()
-                finish()
             }
         }
 

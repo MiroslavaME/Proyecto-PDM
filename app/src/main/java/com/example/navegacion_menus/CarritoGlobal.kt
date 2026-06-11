@@ -49,6 +49,24 @@ object CarritoGlobal {
         }
     }
 
+    fun calcularTotalCarrito(): Double {
+        var total = 0.0
+        val productos = obtenerProductosSeleccionados()
+        for (p in productos) {
+            total += p.precio
+        }
+        return total
+    }
+
+    fun obtenerResumenTexto(): String {
+        val productos = obtenerProductosSeleccionados()
+        if (productos.isEmpty()) return "Pedido Vacío"
+
+        return productos.groupBy { it.nombre }
+            .map { entry -> "${entry.value.size}x ${entry.key}" }
+            .joinToString(", ")
+    }
+
     fun obtenerProductosSeleccionados(): List<Producto> {
         val nuevaLista = mutableListOf<Producto>()
 
@@ -59,17 +77,15 @@ object CarritoGlobal {
             }
         }
 
-        // Bebidas
         if (latte > 0) desglosar("Latte Clásico", obtenerPrecioBase("Latte Clásico"), "bebida", latte)
         if (espresso > 0) desglosar("Espresso", obtenerPrecioBase("Espresso"), "bebida", espresso)
-        if (chocolate > 0) desglosar("Chocolate Caliente", obtenerPrecioBase("Chocolate caliente"), "bebida", chocolate)
+        if (chocolate > 0) desglosar("Chocolate Caliente", obtenerPrecioBase("Chocolate Caliente"), "bebida", chocolate)
         if (capuccino > 0) desglosar("Capuccino", obtenerPrecioBase("Capuccino"), "bebida", capuccino)
         if (teFrio > 0) desglosar("Té Frío", obtenerPrecioBase("Té Frío"), "bebida", teFrio)
         if (limonada > 0) desglosar("Limonada de Fresa", obtenerPrecioBase("Limonada de Fresa"), "bebida", limonada)
         if (smoothie > 0) desglosar("Smoothie Asha", obtenerPrecioBase("Smoothie Asha"), "bebida", smoothie)
         if (matcha > 0) desglosar("Matcha", obtenerPrecioBase("Matcha"), "bebida", matcha)
 
-        // Comidas
         if (baguette > 0) desglosar("Baguette Pizza", obtenerPrecioBase("Baguette Pizza"), "comida", baguette)
         if (cesar > 0) desglosar("Ensalada César", obtenerPrecioBase("Ensalada César"), "comida", cesar)
         if (pavo > 0) desglosar("Sandwich Pavo", obtenerPrecioBase("Sandwich Pavo"), "comida", pavo)
@@ -79,7 +95,6 @@ object CarritoGlobal {
         if (zanahoria > 0) desglosar("Pastel Zanahoria", obtenerPrecioBase("Pastel Zanahoria"), "comida", zanahoria)
         if (cheesecake > 0) desglosar("Cheesecake", obtenerPrecioBase("Cheesecake"), "comida", cheesecake)
 
-        // Extras / Tienda (Ajustados con los precios que tienes en tus fragmentos XML)
         if (oaxaca > 0) desglosar("Grano Oaxaca", obtenerPrecioBase("Grano Oaxaca"), "extra", oaxaca)
         if (michoacan > 0) desglosar("Molido Michoacán", obtenerPrecioBase("Molido Michoacán"), "extra", michoacan)
         if (rosa > 0) desglosar("Termo Rosa", obtenerPrecioBase("Termo Rosa"), "extra", rosa)

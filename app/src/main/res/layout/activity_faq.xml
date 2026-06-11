@@ -96,7 +96,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mhaisi Stars es nuestro programa de lealtad exclusivo. Acumulas estrellas con cada compra que realizas en la barra o en la app. Tus Mhaisi Stars acumuladas tienen una vigencia completa de 6 meses a partir de tu última compra registrada, por lo que se mantendrán activas mientras sigas disfrutando con nosotros."
+                    android:text="Mhaisi Stars es nuestro programa de lealtad exclusivo. Acumulas estrellas con cada compra que realizas en la app. Tus Mhaisi Stars acumuladas tienen una vigencia completa de 6 meses a partir de tu última compra registrada, por lo que se mantendrán activas mientras sigas disfrutando con nosotros."
                     android:textSize="14sp"
                     android:textColor="?android:attr/textColorSecondary"/>
             </LinearLayout>

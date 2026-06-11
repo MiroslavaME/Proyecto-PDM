@@ -184,7 +184,7 @@ class PedidoFragment : Fragment() {
         val tvTotal = dialogView.findViewById<TextView>(R.id.tv_total_confirmacion)
         val btnFinalizar = dialogView.findViewById<com.google.android.material.button.MaterialButton>(R.id.btn_finalizar_pedido)
         val btnCancelar = dialogView.findViewById<com.google.android.material.button.MaterialButton>(R.id.btn_cancelar_pedido)
-        val rgMetodoPago = dialogView.findViewById<android.widget.RadioGroup>(R.id.rg_metodo_pago)
+        val containerQr = dialogView.findViewById<LinearLayout>(R.id.container_qr_final)
 
         val etCupon = dialogView.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.et_codigo_cupon)
         val btnAplicarCupon = dialogView.findViewById<com.google.android.material.button.MaterialButton>(R.id.btn_aplicar_cupon)
@@ -195,12 +195,17 @@ class PedidoFragment : Fragment() {
         val productos = CarritoGlobal.obtenerProductosSeleccionados()
         val grupos = productos.groupBy { it.nombre }
 
+        // Creamos una lista de texto local para construir el resumen de forma segura
+        val listaTextosResumen = mutableListOf<String>()
+
         for (entry in grupos) {
             val listaDeIguales = entry.value
             val p = listaDeIguales[0]
             val cantidad = listaDeIguales.size
             val subtotalProducto = p.precio * cantidad
             totalOriginal += subtotalProducto
+
+            listaTextosResumen.add("${cantidad}x ${p.nombre}")
 
             val tvProducto = TextView(context).apply {
                 text = "${cantidad}x  ${p.nombre}  ->  $${String.format("%.2f", subtotalProducto)}"
@@ -230,8 +235,15 @@ class PedidoFragment : Fragment() {
         containerResumen?.addView(tvTotalFinal)
 
         btnAplicarCupon?.setOnClickListener {
-            val codigoIngresado = etCupon?.text?.toString()?.trim()?.uppercase() ?: ""
             val prefs = requireContext().getSharedPreferences("MhaisiPrefs", Context.MODE_PRIVATE)
+            val isLoggedIn = prefs.getBoolean("is_logged_in", false)
+
+            if (!isLoggedIn) {
+                Toast.makeText(context, "Debes registrarte para poder usar cupones de descuento", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
+            val codigoIngresado = etCupon?.text?.toString()?.trim()?.uppercase() ?: ""
 
             when (codigoIngresado) {
                 "MHAISIBIENVENIDA" -> {
@@ -241,17 +253,17 @@ class PedidoFragment : Fragment() {
                         val descuento = totalOriginal * 0.10
                         totalFinal = totalOriginal - descuento
                         cuponAplicado = "MHAISIBIENVENIDA"
-                        tvTotalFinal.text = "\nTotal a pagar (10% desc. aplicado): $${String.format("%.2f", totalFinal)}"
-                        Toast.makeText(context, "¡Cupón de Bienvenida aplicado! ", Toast.LENGTH_SHORT).show()
+                        tvTotalFinal.text = "\nTotal a pagar (10% desc. applied): $${String.format("%.2f", totalFinal)}"
+                        Toast.makeText(context, "¡Cupón de Bienvenida aplicado!", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(context, "Este cupón de bienvenida ya fue utilizado ", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Este cupón de bienvenida ya fue utilizado", Toast.LENGTH_SHORT).show()
                     }
                 }
                 "MHAISICUMPLE" -> {
                     val calendar = java.util.Calendar.getInstance()
                     val mesActual = calendar.get(java.util.Calendar.MONTH) + 1
                     val mesNacimientoUsuario = prefs.getInt("user_birth_month", 0)
-                    val cumpleYaUsado = prefs.getBoolean("cupon_mhaisicump_usado", false)
+                    val cumpleYaUsado = prefs.getBoolean("cupon_mhaisicumple_usado", false)
 
                     if (mesNacimientoUsuario == mesActual) {
                         if (!cumpleYaUsado) {
@@ -261,15 +273,15 @@ class PedidoFragment : Fragment() {
                                 totalFinal = totalOriginal - bebidaRegalo.precio
                                 cuponAplicado = "MHAISICUMPLE"
                                 tvTotalFinal.text = "\nTotal a pagar (Bebida gratis aplicada): $${String.format("%.2f", totalFinal)}"
-                                Toast.makeText(context, "¡Cupón de Cumpleaños aplicado! ", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "¡Cupón de Cumpleaños aplicado!", Toast.LENGTH_SHORT).show()
                             } else {
-                                Toast.makeText(context, "Requieres al menos una bebida en tu orden ", Toast.LENGTH_LONG).show()
+                                Toast.makeText(context, "Requieres al menos una bebida en tu orden", Toast.LENGTH_LONG).show()
                             }
                         } else {
-                            Toast.makeText(context, "Tu cupón de cumpleaños ya fue utilizado ", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Tu cupón de cumpleaños ya fue utilizado", Toast.LENGTH_SHORT).show()
                         }
                     } else {
-                        Toast.makeText(context, "Este cupón solo es válido en el mes de tu cumpleaños ", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "Este cupón solo es válido el dia de tu cumpleaños", Toast.LENGTH_LONG).show()
                     }
                 }
                 "" -> {
@@ -287,29 +299,52 @@ class PedidoFragment : Fragment() {
             }
         }
 
-        btnFinalizar?.setOnClickListener {
-            val metodoSeleccionado = when (rgMetodoPago?.checkedRadioButtonId) {
-                R.id.rb_tarjeta  -> "Tarjeta de Crédito/Débito"
-                R.id.rb_efectivo -> "Efectivo en caja"
-                R.id.rb_wallet   -> "Apple Wallet"
-                else             -> "No seleccionado"
-            }
-
+        btnCancelar?.setOnClickListener {
             dialog.dismiss()
+        }
 
-            if (cuponAplicado.isNotEmpty()) {
-                val prefs = requireContext().getSharedPreferences("MhaisiPrefs", Context.MODE_PRIVATE)
-                prefs.edit().putBoolean("cupon_${cuponAplicado.lowercase()}_usado", true).apply()
+        btnFinalizar?.setOnClickListener {
+            // Si el contenedor del QR ya es visible, significa que el usuario está presionando "Entendido"
+            if (containerQr?.visibility == View.VISIBLE) {
+                dialog.dismiss()
+
+                // 1. Limpiamos el carrito de compras
+                CarritoGlobal.limpiarCarrito()
+                view?.let { cargarOrden(it) }
+
+                // 2. Notificamos al usuario dónde quedó guardado su ticket QR
+                Toast.makeText(
+                    requireContext(),
+                    "Pedido confirmado. Puedes consultar tu código QR en 'Mis Pedidos'",
+                    Toast.LENGTH_LONG
+                ).show()
+
+                // 3. Cerramos SecondActivity para regresar de inmediato a MainActivity (Home)
+                requireActivity().finish()
+                return@setOnClickListener
             }
 
-            Toast.makeText(
-                context,
-                "Pedido confirmado con $metodoSeleccionado por $${String.format("%.2f", totalFinal)}.",
-                Toast.LENGTH_LONG
-            ).show()
+            val prefs = requireContext().getSharedPreferences("MhaisiPrefs", Context.MODE_PRIVATE)
+            val isLoggedIn = prefs.getBoolean("is_logged_in", false)
+            val currentUserId = prefs.getInt("user_id", 1) // El ID por defecto de tu invitado o usuario base
 
-            CarritoGlobal.limpiarCarrito()
-            view?.let { cargarOrden(it) }
+            val resumenPedidosTexto = if (listaTextosResumen.isEmpty()) "Pedido Mhaisi" else listaTextosResumen.joinToString(", ")
+
+            val dbHelper = DataBaseHelper(requireContext())
+            val idResultado = dbHelper.insertarPedido(currentUserId, resumenPedidosTexto, totalFinal)
+
+            if (!isLoggedIn && idResultado != -1L) {
+                // Guardamos el ID del pedido específico que acaba de hacer para que lo pueda consultar
+                prefs.edit().putLong("ultimo_pedido_invitado_id", idResultado).apply()
+            }
+
+            dialogView.findViewById<LinearLayout>(R.id.layout_cupon_seccion)?.visibility = View.GONE
+            dialogView.findViewById<LinearLayout>(R.id.layout_pago_seccion)?.visibility = View.GONE
+            dialogView.findViewById<View>(R.id.divisor_linea)?.visibility = View.GONE
+            dialogView.findViewById<View>(R.id.btn_cancelar_pedido)?.visibility = View.GONE
+
+            btnFinalizar.text = "Entendido"
+            containerQr?.visibility = View.VISIBLE
         }
 
         dialog.show()

@@ -25,8 +25,8 @@
         <item name="android:minHeight">48dp</item>
     </style>
 
-    <style name="Theme.Mhaisi.PopupOverlay" parent="ThemeOverlay.Material3.DynamicColors.Light">
-        <item name="android:itemBackground">?attr/colorSurface</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
+    <style name="Theme.Mhaisi.PopupOverlay" parent="ThemeOverlay.Material3.Light">
+        <item name="android:itemBackground">@color/white</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>

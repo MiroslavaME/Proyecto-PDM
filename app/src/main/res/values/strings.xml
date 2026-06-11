@@ -16,8 +16,8 @@
     <string name="summary_title">¡Bienvenid@ a Mhaisi Coffee!</string>
     <string name="summary_description">Olvídate de las filas. Ordena de forma <b>100% digital</b> y disfruta tu café favorito sin esperas recogiendo directamente en caja.</string>
     <string name="summary_features_title">Pasos para disfrutar tu café:</string>
-    <string name="summary_feature_1">1. <b>Regístrate y Gana:</b> Crea tu cuenta obligatoria para empezar a acumular puntos y acceder a nuestro menú exclusivo.</string>
-    <string name="summary_feature_2">2. <b>Elige y Aplica:</b> Selecciona tus productos favoritos y no olvides aplicar tus cupones de descuento en el carrito.</string>
+    <string name="summary_feature_1">1. <b>Regístrate y Gana:</b> Crea tu cuenta para empezar a acumular puntos. </string>
+    <string name="summary_feature_2">2. <b>Elige y Aplica:</b> Una vez registrado, elige tus favoritos y no olvides aplicar tus cupones de descuento en el carrito.</string>
     <string name="summary_feature_3">3. <b>Escanea y Disfruta:</b> Al finalizar, recibirás un código QR único. Muéstralo en la barra una vez te llamen para recoger tu pedido al instante.</string>
     <string name="btn_make_order">Realizar mi pedido ahora</string>
 

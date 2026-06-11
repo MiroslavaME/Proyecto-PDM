@@ -12,7 +12,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxHeight="550dp"
+        android:maxHeight="580dp"
         android:overScrollMode="never">
 
         <LinearLayout
@@ -40,6 +40,7 @@
                 android:layout_marginBottom="16dp" />
 
             <LinearLayout
+                android:id="@+id/layout_cupon_seccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -74,58 +75,94 @@
                     android:textColor="?attr/colorTextoPasos"
                     android:textStyle="bold"/>
             </LinearLayout>
+
             <View
+                android:id="@+id/divisor_linea"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="?attr/colorSurfaceVariant"
                 android:layout_marginBottom="16dp"/>
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/layout_pago_seccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Método de pago"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="?attr/colorTextoPasos"
-                android:layout_marginBottom="8dp" />
+                android:orientation="vertical">
 
-            <RadioGroup
-                android:id="@+id/rg_metodo_pago"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Método de pago"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorTextoPasos"
+                    android:layout_marginBottom="8dp" />
+
+                <RadioGroup
+                    android:id="@+id/rg_metodo_pago"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="24dp">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_tarjeta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tarjeta de Crédito / Débito"
+                        android:checked="true"
+                        android:textSize="14sp"
+                        android:textColor="?attr/colorOnSurface"
+                        app:buttonTint="?attr/colorTextoPasos" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_efectivo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Efectivo en caja"
+                        android:textSize="14sp"
+                        android:textColor="?attr/colorOnSurface"
+                        app:buttonTint="?attr/colorTextoPasos" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_wallet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mhaisi Wallet"
+                        android:textSize="14sp"
+                        android:textColor="?attr/colorOnSurface"
+                        app:buttonTint="?attr/colorTextoPasos" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/container_qr_final"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginBottom="24dp">
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginBottom="16dp"
+                android:paddingTop="8dp">
 
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/rb_tarjeta"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tarjeta de Crédito / Débito"
-                    android:checked="true"
+                    android:text="¡Escanea en caja para recoger!\n(Tu código QR permanecerá guardado en 'Mis Pedidos')"
                     android:textSize="14sp"
-                    android:textColor="?attr/colorOnSurface"
-                    app:buttonTint="?attr/colorTextoPasos" />
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorTextoPasos"
+                    android:layout_marginBottom="12dp"/>
 
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/rb_efectivo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Efectivo en caja"
-                    android:textSize="14sp"
-                    android:textColor="?attr/colorOnSurface"
-                    app:buttonTint="?attr/colorTextoPasos" />
-
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/rb_wallet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Mhaisi Wallet"
-                    android:textSize="14sp"
-                    android:textColor="?attr/colorOnSurface"
-                    app:buttonTint="?attr/colorTextoPasos" />
-            </RadioGroup>
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/qr_recoleccion"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layout_botones_accion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"

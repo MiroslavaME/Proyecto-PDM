@@ -4,8 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -33,6 +31,13 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val btnNavigate = findViewById<com.google.android.material.button.MaterialButton>(R.id.btnNavigate)
+        btnNavigate?.setOnClickListener {
+            Log.d("Tarea3_Mhaisi", "Navegación: El usuario presionó 'Realizar mi pedido ahora'")
+            val intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
+        }
 
         topAppBar = findViewById(R.id.topAppBar)
         drawerLayout = findViewById(R.id.drawerLayout)
@@ -101,6 +106,94 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            drawerLayout.close()
+            cargarEstadoSesion()
+
+            when (menuItem.itemId) {
+                R.id.nav_home -> {
+                    Toast.makeText(this, "Inicio: Mhaisi Coffee", Toast.LENGTH_SHORT).show()
+                }
+
+                R.id.nav_orders -> {
+                    startActivity(Intent(this, MisPedidosActivity::class.java))
+                }
+
+                R.id.nav_favorites -> {
+                    if (usuarioEstaRegistrado) {
+                        startActivity(Intent(this, FavoritosActivity::class.java))
+                    } else {
+                        Toast.makeText(this, "Crea tu cuenta para guardar favoritos", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, RegistroActivity::class.java))
+                    }
+                }
+
+                R.id.nav_coupons -> {
+                    if (usuarioEstaRegistrado) {
+                        startActivity(Intent(this, CuponesActivity::class.java))
+                    } else {
+                        Toast.makeText(this, "Los cupones son exclusivos para miembros", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, RegistroActivity::class.java))
+                    }
+                }
+
+                R.id.nav_news -> {
+                    val intent = Intent(this, InfoActivity::class.java)
+                    intent.putExtra("TIPO_PANTALLA", "NOVEDADES")
+                    startActivity(intent)
+                }
+
+                R.id.nav_season -> {
+                    val intent = Intent(this, InfoActivity::class.java)
+                    intent.putExtra("TIPO_PANTALLA", "TEMPORADA")
+                    startActivity(intent)
+                }
+
+                R.id.nav_merch -> {
+                    val intent = Intent(this, InfoActivity::class.java)
+                    intent.putExtra("TIPO_PANTALLA", "MERCANCIA")
+                    startActivity(intent)
+                }
+
+                R.id.nav_locations -> {
+                    val intent = Intent(this, InfoActivity::class.java)
+                    intent.putExtra("TIPO_PANTALLA", "SUCURSALES")
+                    startActivity(intent)
+                }
+
+                R.id.nav_about_us -> {
+                    val intent = Intent(this, InfoActivity::class.java)
+                    intent.putExtra("TIPO_PANTALLA", "ABOUT")
+                    startActivity(intent)
+                }
+
+                R.id.nav_faq -> {
+                    val intent = Intent(this, InfoActivity::class.java)
+                    intent.putExtra("TIPO_PANTALLA", "FAQ")
+                    startActivity(intent)
+                }
+
+                R.id.nav_logout -> {
+                    if (usuarioEstaRegistrado) {
+                        cerrarSesionUsuario()
+                    } else {
+                        Toast.makeText(this, "Navegas en modo Invitado", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            true
+        }
+        val prefs = getSharedPreferences("MhaisiPrefs", android.content.Context.MODE_PRIVATE)
+        val isLoggedIn = prefs.getBoolean("is_logged_in", false)
+
+        if (!isLoggedIn) {
+            prefs.edit().apply {
+                remove("ultimo_pedido_invitado_id")
+                apply()
+            }
+            Log.d("MhaisiSafety", "Identificador de pedido de invitado removido con éxito en el arranque.")
+        }
     }
 
     private fun cargarEstadoSesion() {
@@ -132,9 +225,19 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         cargarEstadoSesion()
         actualizarMenuToolbar()
+
+        val prefs = getSharedPreferences("MhaisiPrefs", Context.MODE_PRIVATE)
+        val currentUserId = prefs.getInt("user_id", 1)
+
+        val dbHelper = DataBaseHelper(this)
+        CarritoGlobal.listaFavoritos.clear()
+        try {
+            CarritoGlobal.listaFavoritos.addAll(dbHelper.obtenerTodosLosFavoritosPorUsuario(currentUserId))
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Error al cargar favoritos", e)
+        }
     }
 
-    // CORRECCIÓN 2: Método personalizado para actualizar dinámicamente el texto del perfil manteniendo el color del XML
     private fun actualizarMenuToolbar() {
         val perfilItem = topAppBar.menu.findItem(R.id.edit)
 

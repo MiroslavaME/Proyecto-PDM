@@ -27,8 +27,9 @@
                 app:titleTextColor="?attr/colorOnPrimary"
                 app:navigationIconTint="?attr/colorOnPrimary"
                 app:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
-                app:popupTheme="@style/Theme.Mhaisi.PopupOverlay" />
+                app:popupTheme="@style/Theme.Mhaisi.PopupOverlay">
 
+            </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView

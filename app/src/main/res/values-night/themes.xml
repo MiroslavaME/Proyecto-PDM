@@ -4,7 +4,8 @@
     <style name="Base.Theme.Navegacion_Menus" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorBarraYBotones">@color/morado_app_theme_night</item>
         <item name="colorTextoPasos">@color/verde_app_night</item>
-        <item name="colorFondoDialogoConfirmar">#1E1A24</item> <item name="colorPrimary">?attr/colorBarraYBotones</item>
+        <item name="colorFondoDialogoConfirmar">#1E1A24</item>
+        <item name="colorPrimary">?attr/colorBarraYBotones</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
@@ -15,5 +16,10 @@
     <style name="CustomActionButtonStyle" parent="Widget.AppCompat.ActionButton">
         <item name="android:minWidth">48dp</item>
         <item name="android:minHeight">48dp</item>
+    </style>
+
+    <style name="Theme.Mhaisi.PopupOverlay" parent="ThemeOverlay.Material3.Dark">
+        <item name="android:itemBackground">@color/gris_fondo_popup</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 </resources>

@@ -8,4 +8,6 @@
 
     <color name="verde_app_night">#2E8468</color>
     <color name="morado_app_theme_night">#7761B3</color>
+
+    <color name="gris_fondo_popup">#1E1A24</color>
 </resources>

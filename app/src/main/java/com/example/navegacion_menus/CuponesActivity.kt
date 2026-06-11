@@ -24,7 +24,8 @@ class CuponesActivity : AppCompatActivity() {
         val prefs = getSharedPreferences("MhaisiPrefs", Context.MODE_PRIVATE)
 
         val mesNacimientoUsuario = prefs.getInt("user_birth_month", 0)
-        val cumpleYaUsado = prefs.getBoolean("cupon_mhaisicump_usado", false)
+
+        val cumpleYaUsado = prefs.getBoolean("cupon_mhaisicumple_usado", false)
 
         if (cardCumple != null) {
             if (mesNacimientoUsuario == mesActual && !cumpleYaUsado) {
